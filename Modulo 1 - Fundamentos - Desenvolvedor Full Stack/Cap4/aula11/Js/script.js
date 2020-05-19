@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
 });
 
 function DoMap() {
-  const nomeEmail = peaple.results.map((person) => {
+  const nomeEmail = people.results.map((person) => {
     return {
       name: person.name,
       email: person.email,
@@ -21,7 +21,7 @@ function DoMap() {
 }
 
 function DoFilter() {
-  const retorno = peaple.results.filter((person) => {
+  const retorno = people.results.filter((person) => {
     return person.dob.age > 50;
   });
   console.log(retorno);
@@ -40,7 +40,7 @@ function DoForEach() {
 
 function DoReduce() {
   //  conta os valores dentro do array
-  const totalAges = peaple.results.reduce((accumulator, current) => {
+  const totalAges = people.results.reduce((accumulator, current) => {
     return accumulator + current.dob.age;
   }, 0);
   console.log(totalAges);
@@ -48,7 +48,7 @@ function DoReduce() {
 
 function DoFind() {
   console.log('Medoto Find');
-  const primeiroItem = peaple.results.find((person) => {
+  const primeiroItem = people.results.find((person) => {
     return person.location.state === 'Minas Gerais';
   });
   console.log(primeiroItem);
@@ -56,7 +56,7 @@ function DoFind() {
 
 function DoSome() {
   console.log('Medoto Some');
-  const some = peaple.results.some((person) => {
+  const some = people.results.some((person) => {
     return person.location.state === 'Amazonasasadf';
   });
   console.log(some);
@@ -65,7 +65,7 @@ function DoSome() {
 function DoEvery() {
   // todos os itens atendem a uma regra
   console.log('Metodo Every');
-  const resultado = peaple.results.every((person) => {
+  const resultado = people.results.every((person) => {
     return person.nat === 'US';
   });
   console.log(resultado);
@@ -73,7 +73,7 @@ function DoEvery() {
 
 function DoSort() {
   console.log('Metodo Sort');
-  const resultado = peaple.results
+  const resultado = people.results
     .map((person) => {
       return { name: person.name.first };
     })
@@ -87,7 +87,7 @@ function DoSort() {
 
 // function DoFilterComMap() {
 //   console.log('Iniciando o filto com 50 e todos os campos');
-//   const retorno = peaple.results.filter((person) => {
+//   const retorno = people.results.filter((person) => {
 //     return person.dob.age > 50;
 //   });
 
