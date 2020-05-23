@@ -89,6 +89,7 @@ function renderCountryList() {
   // countriesHTML += '/<div>';
   tabCountries.innerHTML = countriesHTML;
 }
+
 function renderFarorites() {
   let favoritesHTML = '<div>';
   favoriteCountries.forEach((country) => {
