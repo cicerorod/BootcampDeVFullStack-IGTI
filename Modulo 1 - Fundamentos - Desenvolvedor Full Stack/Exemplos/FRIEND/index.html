@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Find Friend</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="https://kit.fontawesome.com/8d1919c87e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="navbar-fixed">
+        <nav id="mainNav" class="blue accent-2">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo center">FF</a>
+                <a id="searchLink" class="left active" href="#">SEARCH</a>
+                <ul class="left hide-on-med-and-down">
+                    <li><a href="badges.html">FAVORITES</a></li>
+                </ul>
+                <a id="accountButton" class="right" href="#"><i class="material-icons">account_circle</i></a>                
+            </div>
+        </nav>
+    </div>
+    
+    <header id="searchHeader" class="indigo accent-3">
+        <div class="container">
+            <div class="row">
+                <a id="searchHistoryButton" class="waves-effect waves-light btn-small blue accent-2"><i class="material-icons left">keyboard_arrow_left</i>search history</a>
+            </div>
+            <div class="row">
+                <h4 class="white-text">NEW SEARCH</h4>
+                <p class="white-text">
+                    Find your friends by name or e-Mail to see statics info. <br/>
+                    <span class="hide-on-small-only">You can use predefined filters and save your own filters too!</span>
+                </p>
+            </div>
+        </div>
+    </header>
+    
+    <main id="userWrap" class="row">
+        <section id="searchWrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col s10 offset-s1">
+                        <form id="searchForm" action="#">
+                            <a id="searchButton" class="btn btn-flat disabled"><i class="material-icons big">search</i></a>
+                            <div class="input-field">                                
+                                <input placeholder="Name or e-Mail" id="searchBar" type="text" class="validate">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 center">
+                        <a id="showStaticsButton" class="waves-effect waves-light btn indigo">SHOW STATICS</a>
+                    </div>
+                    <div id="staticsTitleDiv" class="col s12 hide-on-small-only">
+                        <h5 class="center grey-text">USERS STATICS</h5>
+                    </div>
+                    <div id="staticsDiv" class="col s12 hide-on-small-only">
+                        <table class="centered responsive-table">
+                            <thead>
+                            <tr>
+                                <th>Found Users</th>
+                                <th>Male</th>
+                                <th>Female</th>
+                                <th>Sum of Ages</th>
+                                <th>Avarage of Ages</th>
+                                <th>Favorites</th>
+                            </tr>
+                            </thead>                
+                            <tbody>
+                            <tr id="staticsWrap"></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="row blue-grey lighten-5">
+            <div id="loadingWrap" class="col s12 center">
+                <div id="loadingSpinner" class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                        <div class="circle"></div>
+                        </div><div class="gap-patch">
+                        <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="loadedUsers" class="row">
+                <div class="col s12">
+          
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large indigo accent-2">
+          <i class="large material-icons">bar_chart</i>
+        </a>
+        <ul>
+            <li><a id="maleFilter" class="btn-floating indigo"><i class="fas fa-mars"></i></a></li>
+            <li><a id="femaleFilter" class="btn-floating indigo"><i class="fas fa-venus"></i></a></li>
+            <li><a id="favoriteFilter" class="btn-floating indigo"><i class="material-icons">favorite</i></a></li>
+        </ul>
+      </div>
+
+     <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

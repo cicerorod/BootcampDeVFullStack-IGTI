@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Color Selector App</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <header class="col s12">
+                <h1 class="center-align">Color Selector APP</h1>
+            </header>
+        </div>
+        <div class="row">
+            <section class="col s9">
+                <form action="#">
+                    <div class="col s12">
+                        <div class="col s9 slider-wrap">
+                            <label for="rSlider">Vermelho</label>
+                            <input type="range" id="rSlider" name="rSlider" min="0" max="255">
+                        </div>
+                        <div class="col s3">
+                            <input class="center-align" type="text" name="rTxtField" id="rTxtField" disabled>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="col s9 slider-wrap">
+                            <label for="gSlider">Verde</label>
+                            <input type="range" id="gSlider" name="gSlider" min="0" max="255">
+                        </div>
+                        <div class="col s3">
+                            <input class="center-align" type="text" name="gTxtField" id="gTxtField" disabled>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="col s9 slider-wrap">
+                            <label for="bSlider">Azul</label>
+                            <input type="range" id="bSlider" name="bSlider" min="0" max="255">
+                        </div>
+                        <div class="col s3">
+                            <input class="center-align" type="text" name="bTxtField" id="bTxtField" disabled>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="col s9" id="colorSample"></div>
+                        <div class="col s3">
+                            <a id="saveColor" class="waves-effect waves-light btn-small">Salvar</a>
+                        </div>                        
+                    </div>
+                </form>
+            </section>
+            <section class="col s3">
+                <div class="col s12">
+                    <h6>Saved Colors</h6>
+                </div>
+                <div id="savedColors" class="row">
+                </div>                
+            </section>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
