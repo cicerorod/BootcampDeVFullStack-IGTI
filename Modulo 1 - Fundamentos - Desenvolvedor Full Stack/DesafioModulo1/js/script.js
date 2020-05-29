@@ -15,6 +15,7 @@ window.addEventListener('load', () => {
 
   textPesquisa = document.querySelector('#textPesquisa');
   textPesquisa.addEventListener('keyup', () => pesquisar());
+  textPesquisa.addEventListener('keypress', () => pesquisar());
 
   buttonBuscar = document.querySelector('#buttonBuscar');
   buttonBuscar.addEventListener('click', () => pesquisarNomes());
@@ -33,13 +34,13 @@ function pesquisar() {
   let str = textPesquisa.value;
   let filteredArray = [];
 
-  if (str !== '') {
-    allNomes.forEach((val) => {
-      if (val && val.name.toLowerCase().includes(str.toLowerCase())) {
-        filteredArray.push(val);
-      }
-    });
-  }
+  //if (str !== '') {
+  allNomes.forEach((val) => {
+    if (val && val.name.toLowerCase().includes(str.toLowerCase())) {
+      filteredArray.push(val);
+    }
+  });
+  //}
 
   console.log('total atual' + filteredArray.length);
 
@@ -56,7 +57,7 @@ function pesquisarNomes() {
   let str = textPesquisa.value;
   let filteredArray = [];
 
-  console.log(str);
+  //console.log(str);
 
   if (str !== '') {
     // filteredArray = nomesList.filter((nome) => {
@@ -74,10 +75,11 @@ function pesquisarNomes() {
     nomesList = allNomes;
     render();
   }
-  console.log('filtrado');
-  console.log(filteredArray);
-  console.log('todos');
-  console.log(allNomes);
+
+  //console.log('filtrado');
+  //console.log(filteredArray);
+  //console.log('todos');
+  //console.log(allNomes);
 
   // var windowArray = new Array('item', 'thiid-3ng', 'id-3-text', 'class');
   // var result = [];
@@ -107,11 +109,13 @@ async function fetchNomesAsyncAwait() {
   });
 
   allNomes = nomesList;
-  //console.log(allNomes);
+  console.log(allNomes);
   render();
 }
 
 function render() {
+  let str = textPesquisa.value;
+
   renderNomeList();
   renderTotalNomes();
   renderEstatisticatotalSexoFeminino();
@@ -119,6 +123,12 @@ function render() {
   renderEstatisticatotalSexoMasculino();
   renderEstatisticamediaIdade();
   renderEstatisticaSomaIdade();
+
+  if (str.length > 0) {
+    buttonBuscar.disabled = false;
+  } else {
+    buttonBuscar.disabled = true;
+  }
 }
 
 function renderNomeList() {
