@@ -1,0 +1,112 @@
+/*
+ *navbar styles
+ */
+#mainNav {
+  box-shadow: none;
+}
+
+#searchLink,
+#accountButton {
+  padding: 0 15px;
+}
+
+#searchLink:hover,
+#accountButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#searchLink.active,
+#accountButton.active {
+  background-color: #3d5afe;
+}
+
+/*
+*header styles
+*/
+#searchHeader {
+  height: 200px;
+}
+
+#searchHistoryButton {
+  margin-top: 20px;
+}
+
+.section-title {
+  color: white;
+  font-weight: bold;
+}
+
+/*
+*main styles
+*/
+#searchForm {
+  position: relative;
+  padding: 30px 28px 0px 0;
+}
+
+#searchBar:focus {
+  border-bottom: 1px solid #3d5afe;
+}
+
+#searchButton {
+  position: absolute;
+  right: 0px;
+  top: 50px;
+
+  padding: 0;
+
+  cursor: pointer;
+}
+
+.btn-flat i.big {
+  font-size: 30px;
+}
+
+.btn:hover {
+  background-color: transparent;
+}
+
+#loadingWrap {
+  /*padding-top: 30px;*/
+}
+
+.card .card-title {
+  font-size: 18px;
+}
+
+.card .card-content {
+  padding: 24px 10px;
+}
+
+.card .card-image .user-icons {
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+
+.card .card-image .user-icons .icon {
+  padding: 5px;
+}
+
+.card .card-image .user-icons .icon i {
+  font-size: 30px;
+  color: white;
+}
+
+.card .card-image .user-icons .icon i.favorite {
+  cursor: pointer;
+}
+
+.card .card-image .user-icons .icon i.favorite.favorited {
+  color: #ff4081;
+}
+
+#showStaticsButton {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  #showStaticsButton {
+    display: block;
+  }
+}
