@@ -1,0 +1,14 @@
+{
+  "name": "grades-control-api",
+  "version": "1.0.0",
+  "description": "instalacao do express",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \\error"
+  },
+  "author": "cicero",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
