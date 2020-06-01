@@ -1,3 +1,11 @@
+npm init -> inicializa um projeto node
+
+//npm install express -> instala a extensao do express no projeto
+//npm install -g nodemon -> instalaglobalmente o modemon para iniciar a api
+
+// nao para a aplicação
 modemon .\index.js
+
+
 
 https://www.youtube.com/watch?v=c7P03kkrEG8

@@ -25,12 +25,11 @@ app.listen(4000, function () {
           }
         });
       } else {
-        console.log(err);
+        //console.log(err);
       }
     });
   } catch (err) {
     console.log(err);
   }
-
   console.log('APi inicializada');
 });
