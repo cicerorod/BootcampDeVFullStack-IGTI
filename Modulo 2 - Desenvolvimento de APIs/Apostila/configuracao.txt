@@ -8,4 +8,21 @@ modemon .\index.js
 
 
 
-https://www.youtube.com/watch?v=c7P03kkrEG8
+https://www.youtube.com/watch?v=c7P03kkr
+
+168
+
+117,6
+
+100
+
+
+4 4
+
+coracao = 4
+susto = 4
+oculos = 8
+
+4+8*0-4
+
+Try catch e Método DELETE 	

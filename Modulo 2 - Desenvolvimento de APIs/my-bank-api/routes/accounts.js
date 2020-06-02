@@ -1,6 +1,6 @@
-var express = require('express');
-var fs = require('fs').promises;
-var router = express.Router();
+const express = require('express');
+const fs = require('fs').promises;
+const router = express.Router();
 
 router.post('/', async (req, res) => {
   let account = req.body;
@@ -11,8 +11,10 @@ router.post('/', async (req, res) => {
     json.accounts.push(account);
     await fs.writeFile(global.filemane, JSON.stringify(json));
     res.end();
+    //loggersssss.info(`POST / account -> $(JSON.stringify(account))`);
   } catch (err) {
     res.status(400).send({ error: err.message });
+    //loggersssss.error('POST / account -> ' + err.message);
   }
 });
 
@@ -22,8 +24,10 @@ router.get('/', async (_, res) => {
     let retorno = JSON.parse(data);
     delete retorno.nextid;
     res.send(retorno);
+    //loggersssss.info('GET / account ');
   } catch (err) {
     res.status(400).send({ error: err.message });
+    //loggersssss.error('GET / account -> ' + err.message);
   }
 });
 
@@ -39,9 +43,11 @@ router.get('/:id', async (req, res) => {
       res.send(account);
     } else {
       res.end();
+      //loggersssss.info('GET /account/:id ');
     }
   } catch (err) {
     res.status(400).send({ error: err.message });
+    //loggersssss.error('GET / account/:id -> ' + err.message);
   }
 });
 
@@ -55,8 +61,10 @@ router.delete('/:id', async (req, res) => {
     json.accounts = accounts;
     await fs.writeFile(global.filemane, JSON.stringify(json));
     res.end();
+    //loggersssss.info('Delete /account/:id ' + req.params.id);
   } catch (err) {
     res.status(400).send({ error: err.message });
+    //loggersssss.error('Delete -> ' + err.message);
   }
 });
 
@@ -73,8 +81,10 @@ router.put('/', async (req, res) => {
     json.accounts[oldindex].balance = newaccount.balance;
     await fs.writeFile(global.filemane, JSON.stringify(json));
     res.end();
+    //loggersssss.info('Delete /account/:id ' + JSON.stringify(newaccount));
   } catch (error) {
     res.status(400).send({ error: err.message });
+    //loggersssss.error('PUT /account ' + err.message);
   }
 });
 
@@ -94,8 +104,13 @@ router.post('/transacao', async (req, res) => {
 
     await fs.writeFile(global.filemane, JSON.stringify(json));
     res.send(json.accounts[index]);
+
+    //loggersssss.info(
+    //  'Transacao /account/transacao/:id ' + JSON.stringify(json.accounts[index])
+    //);
   } catch (err) {
     res.status(400).send({ error: err.message });
+    //loggersssss.error('transacao /account ' + err.message);
   }
 });
 
