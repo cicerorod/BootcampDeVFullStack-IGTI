@@ -1,0 +1,40 @@
+nmp init -> criar novo projeto
+
+
+
+
+
+
+--- jsonformatter.org
+
+--- https://github.com/geovannyAvelar/Dados-Abertos-Campeonato-Brasileiro
+
+package.json
+type: module  -> para utilizar o modeulo do nodes "import from ....."
+import {promisses} from "fs";
+
+utilizar node --experimenttal-modules index.js
+
+npm install express
+import express from "express"
+
+
+const app = express();
+app.use(express.json());
+
+
+add.get("/times/campeao",(req, res)=>{
+
+	
+
+})
+
+app.listen(3000, ()=> {
+	console.log("tese")
+})
+
+
+Poderia explicar como debugar?  
+
+
+
