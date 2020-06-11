@@ -11,7 +11,7 @@ nmp init -> criar novo projeto
 
 package.json
 type: module  -> para utilizar o modeulo do nodes "import from ....."
-import {promisses} from "fs";
+import {promisses} from "fs";9oo
 
 utilizar node --experimenttal-modules index.js
 
