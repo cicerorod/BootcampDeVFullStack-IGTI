@@ -1,0 +1,9 @@
+// criar projeto base
+npx create-react-app --scripts-version 3.4.1 teste-app
+
+// executar o projeto (levanta um servidor de desenvolvimento)
+yarn start
+
+// para utilizar o projeto base sempre que criar uma nova pasta com a mesma
+// estrutura precisa executar o comando abaixo para baixar as dependencias
+yarn
