@@ -8,7 +8,8 @@ import ProgressBarSalary from "./components/ProgressBarSalary";
 
 const COLOR_INSS = "#e67e22";
 const COLOR_IRPF = "#c0392b";
-const COLOR_NET_SALARY = "#16a085";
+const COLOR_NET_SALARY = "#990876";
+const COLOR_NET_SALARY2 = "#16a085";
 
 export default class App extends Component {
   constructor() {

@@ -24,7 +24,7 @@ export default class ProgressBarSalary extends Component {
           style={{
             backgroundColor: colorINSS,
             width: percentINSS + "%",
-            height: "20px",
+            height: "100px",
           }}
         ></div>
 
@@ -32,7 +32,7 @@ export default class ProgressBarSalary extends Component {
           style={{
             backgroundColor: colorIRPF,
             width: percentIRPF + "%",
-            height: "20px",
+            height: "100px",
           }}
         ></div>
 
@@ -40,7 +40,7 @@ export default class ProgressBarSalary extends Component {
           style={{
             backgroundColor: colorNetSalary,
             width: percentNetSalary + "%",
-            height: "20px",
+            height: "100px",
           }}
         ></div>
       </div>

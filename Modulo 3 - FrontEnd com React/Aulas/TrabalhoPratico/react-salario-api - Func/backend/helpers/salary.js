@@ -1,44 +1,19 @@
-// Fonte: https://www.todacarreira.com/calculo-salario-liquido/
-
-const INSS_TABLE = [
-  {
-    id: 1,
-    minValue: 0,
-    maxValue: 1045,
-    difference: 1045 - 0,
-    discountPercentage: 0.075,
-    discountValue: -1,
-  },
-  {
-    id: 2,
-    minValue: 1045.01,
-    maxValue: 2089.6,
-    difference: 2089.6 - 1045,
-    discountPercentage: 0.09,
-  },
-  {
-    id: 3,
-    minValue: 2089.61,
-    maxValue: 3134.4,
-    difference: 3134.4 - 2089.6,
-    discountPercentage: 0.12,
-  },
-  {
-    id: 4,
-    minValue: 3134.41,
-    maxValue: 6101.06,
-    difference: 6101.06 - 3134.4,
-    discountPercentage: 0.14,
-  },
-];
+const express = require("express");
 
 function round(value) {
   return +value.toFixed(2);
 }
 
 function calculateDiscountINSS(baseINSS) {
+  var fs = require("fs");
+
+  let data = fs.readFileSync("./repository/inss_table.json", "utf8");
+
+  const inss = JSON.parse(data);
+
+  const INSS_TABLE = inss.INSS_TABLE;
+
   let discountINSS = 0;
-  console.log(baseINSS);
 
   if (baseINSS > 6101.07) {
     return 713.1;
@@ -51,13 +26,13 @@ function calculateDiscountINSS(baseINSS) {
     if (baseINSS > currentItem.maxValue) {
       // prettier-ignore
       discountValue = 
-        round(currentItem.difference * currentItem.discountPercentage);
+          round(currentItem.difference * currentItem.discountPercentage);
 
       discountINSS += discountValue;
     } else {
       // prettier-ignore
       discountValue = 
-        round((baseINSS - currentItem.minValue) * currentItem.discountPercentage);
+          round((baseINSS - currentItem.minValue) * currentItem.discountPercentage);
 
       discountINSS += discountValue;
       break;
@@ -70,8 +45,6 @@ function calculateDiscountINSS(baseINSS) {
 }
 
 function calculateDiscountIRPF(baseIRPF) {
-  console.log(baseIRPF);
-
   let discountIRPF =
     baseIRPF < 1903.98
       ? 0
@@ -88,7 +61,11 @@ function calculateDiscountIRPF(baseIRPF) {
   return discountIRPF;
 }
 
-function calculateSalaryFrom(fullSalary) {
+function calcularPercentual(fullSalary, vlrCalculo) {
+  return (vlrCalculo / fullSalary) * 100;
+}
+
+module.exports = function calculateSalaryFrom(fullSalary) {
   const baseINSS = fullSalary;
   const discountINSS = calculateDiscountINSS(baseINSS);
 
@@ -97,13 +74,22 @@ function calculateSalaryFrom(fullSalary) {
 
   const netSalary = baseINSS - discountINSS - discountIRPF;
 
+  const parcentBaseInss = calcularPercentual(fullSalary, baseINSS);
+  const parcentDiscountInss = calcularPercentual(fullSalary, discountINSS);
+  const parcentBaseIRPF = calcularPercentual(fullSalary, baseIRPF);
+  const parcentDiscountIRPF = calcularPercentual(fullSalary, discountIRPF);
+  const parcentNetSalary = calcularPercentual(fullSalary, netSalary);
+
   return {
     baseINSS,
+    parcentBaseInss,
     discountINSS,
+    parcentDiscountInss,
     baseIRPF,
+    parcentBaseIRPF,
     discountIRPF,
+    parcentDiscountIRPF,
     netSalary,
+    parcentNetSalary,
   };
-}
-
-export { calculateSalaryFrom };
+};

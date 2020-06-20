@@ -38,7 +38,6 @@ function round(value) {
 
 function calculateDiscountINSS(baseINSS) {
   let discountINSS = 0;
-  console.log(baseINSS);
 
   if (baseINSS > 6101.07) {
     return 713.1;
@@ -70,8 +69,6 @@ function calculateDiscountINSS(baseINSS) {
 }
 
 function calculateDiscountIRPF(baseIRPF) {
-  console.log(baseIRPF);
-
   let discountIRPF =
     baseIRPF < 1903.98
       ? 0
