@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class ProgressBarSalary extends Component {
   render() {
@@ -14,33 +14,33 @@ export default class ProgressBarSalary extends Component {
     return (
       <div
         style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "flex-start",
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
         }}
       >
         <div
           style={{
             backgroundColor: colorINSS,
-            width: percentINSS + "%",
-            height: "20px",
+            width: percentINSS + '%',
+            height: '20px',
           }}
         ></div>
 
         <div
           style={{
             backgroundColor: colorIRPF,
-            width: percentIRPF + "%",
-            height: "20px",
+            width: percentIRPF + '%',
+            height: '20px',
           }}
         ></div>
 
         <div
           style={{
             backgroundColor: colorNetSalary,
-            width: percentNetSalary + "%",
-            height: "20px",
+            width: percentNetSalary + '%',
+            height: '20px',
           }}
         ></div>
       </div>

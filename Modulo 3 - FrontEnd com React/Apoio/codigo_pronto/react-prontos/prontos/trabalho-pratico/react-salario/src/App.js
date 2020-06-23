@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import InputFullSalary from "./components/InputFullSalary";
-import InputReadOnly from "./components/InputReadOnly";
+import InputFullSalary from './components/InputFullSalary';
+import InputReadOnly from './components/InputReadOnly';
 
-import * as salaryHelpers from "./helpers/salary";
-import ProgressBarSalary from "./components/ProgressBarSalary";
+import * as salaryHelpers from './helpers/salary';
+import ProgressBarSalary from './components/ProgressBarSalary';
 
-const COLOR_INSS = "#e67e22";
-const COLOR_IRPF = "#c0392b";
-const COLOR_NET_SALARY = "#16a085";
+const COLOR_INSS = '#e67e22';
+const COLOR_IRPF = '#c0392b';
+const COLOR_NET_SALARY = '#16a085';
 
 export default class App extends Component {
   constructor() {
