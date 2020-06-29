@@ -1,0 +1,13 @@
+
+
+https://cloud.mongodb.com/
+
+email: cicerorod@gmail.com
+senha:1808036901
+
+usuario para conexao:cicerorod
+senha para conexao: 1808036901
+
+
+MongoDb Atlas
+mongo -host mongodb+srv://cicerorod:1808036901@cluster0-xumbc.mongodb.net/test

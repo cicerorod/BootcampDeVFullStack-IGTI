@@ -1,0 +1,367 @@
+// iniciar servidor 
+C:\Users\cicer>mongod -dbpath="C:\BootcampDeVFullStack\MongoDataBase"
+
+// Acessa o servidor via linha de comendo
+mongo -host localhost:27017
+
+
+
+
+// lista os bancos de dados   : show dbs
+// Banco de dados Atual       : db
+// acessa um banco de dados   : use collection
+// lista as collections       : show collections
+
+//criar coleccections:  db.createCollection("log",{cappd:true, size:1024, max:10}) 
+//deletar coleccections: db.students.drop() 
+
+
+////////////////////////////////////////////////////////////
+//////////////////////// INSERT ////////////////////////////
+////////////////////////////////////////////////////////////
+
+
+/////// 
+// Permite inserir 1 ou mais documentos . Retorno o numero de documentos inseridos
+
+// Exemplo para 1 documento
+db.student.insert(
+  {
+     name: "Pedro Augusto",
+     subject: "Historia" 
+  }
+)
+
+// Exemplo para mais de 1 documento
+db.student.insert(
+  [  
+    {
+      name: "Pedro Augusto",
+      subject: "Historia",
+      type: "Trabalho Pratico",
+      value: 17.5 
+    },    
+    {
+      name: "Claudia Romualdo",
+      subject: "Quimica",
+      type: "Prova Final",
+      value: 28.5
+    }
+  ]
+)
+
+// inserir apenas um documento na collection
+// Retorno o id do documento inserido
+db.student.insertOne(
+  {
+     name: "Maria dos Anjos" 
+  }
+)
+
+// Inserir multiplos documentos
+// Retorno o id do documento inserido
+db.student.insertMany(
+  [
+    {
+     name: "Marco Antonio",
+     subject: "Matematica",
+     type:"Trabalho Pracito",
+     value: 15.4
+
+    },
+
+    {
+    
+      name: "Ana Maria Silva",
+      subject: "Portugues",
+      type:"Prova Final",
+      value: 23.8
+    
+    }
+  ]
+)
+
+
+////////////////////////////////////////////////////////////
+//////////////////////// RETRIEVE //////////////////////////
+////////////////////////////////////////////////////////////
+db.student.find(query,projection)
+db.student.find().pretty()
+
+// retorna todos os dados da collection
+db.student.find()
+
+// retorna os campos selecionados
+db.student.find({},{_id:0,name:1,value:1})
+
+// retorna os campos selecionados com limite de 4 documentos
+db.student.find({},{_id:0,name:1,value:1}).limit(4)
+
+// retorna os campos selecionados com limite de 4 documentos pulando o primeiro
+db.student.find({},{_id:0,name:1,value:1}).limit(4).skip(1)
+
+// retorna os campos selecionados por ordem crescente
+db.student.find({},{_id:0,name:1,value:1}).sort({name:1})
+
+//retorna o primeiro documento
+db.student.findOne(query,projection)
+
+db.student.findOne()
+
+// retorna todos com subject igual quimica
+db.student.find({subject:"Quimica"},{_id:0}).pretty()
+
+//retorna tudo que subject igual Quimica
+db.student.find({subject:"Quimica"},{_id:0}).pretty()
+
+db.student.find({$and :[{subject:"Quimica"},{type:"Prova Final"}]},{_id:0}).pretty() // tudo igual quimica e prova final
+db.student.find({$not :[{subject:"Quimica"},{type:"Prova Final"}]},{_id:0}).pretty() // tuqo que nao for quimica e prova final
+db.student.find({$or  :[{subject:"Quimica"},{type:"Matematica" }]},{_id:0}).pretty() // igual quimica ou Matematica
+db.student.find({$nor :[{subject:"Quimica"},{type:"Prova Final"}]},{_id:0}).pretty() // tudo que nao atendo aos criterios
+
+
+
+// OPERADORES DE COMPARAÇÃO
+$eq  (e)
+$gt  (maior que)
+$gte (maior ou igual)
+$in  ()
+$lt  (menor que)
+$lte (menor ou igual)
+$ne  ()
+$nin () 
+
+
+db.student.find({value: {$gt:20}},{_id:0}).pretty() // valor maior que 20
+db.student.find({subject: {$in:["Quimica","Matematica"]}},{_id:0}).pretty()
+
+
+////////////////////////////////////////////////////////////
+///////////////////////// UPDATE ///////////////////////////
+////////////////////////////////////////////////////////////
+
+// Atualiza o primeiro campo que encontrar
+db.student.updateOne(query,update,options)
+db.student.updateOne({name:"Ana Maria Silva", subject:"Portugues"},{$set: {type:"Trabalho Pratico"})
+db.student.updateOne({name:"Ana Maria Silva", subject:"Portugues",type:"Prova Final"},{$set: {type:"Trabalho Pratico"}})
+db.student.updateOne({name:"Pedro Augusto", subject:"Historia"},{$set:{type:"Prova Final"}})
+db.student.updateOne({name:"Pedro Augusto", subject:"Historia"},{$set:{type:"Prova Final"}})
+
+// Atualiza o primeiro campo que encontrar
+db.student.updateOne({name:"Pedro Augusto", subject:"Historia"},{$inc:{value:10}}) // incrementa valor ja existente
+db.student.updateMany({subject:"Matematica",type:"Trabalho Pratico"},{$inc: {value:100}})  //incrementa o valor
+db.student.updateMany({subject:"Matematica",type:"Trabalho Pratico"},{$set: {value:100}})  //altera o valor
+
+db.student.updateMany({},{$currentDate: {lastModified:true, timestamp:{$type:"timestamp"}}})
+db.student.updateMany({},{$unset:{timestamp:1}})
+db.student.replaceOne(query, updateMany, options)
+db.student.replaceOne({_id: ObjectId("5ef7ad51bbff7cf0f13fc766")},{name:"Cícero",subject:"teste",type:"teste 2", value:100,lastModified: "$$NOW"})
+
+
+////////////////////////////////////////////////////////////
+///////////////////////// DELETE ///////////////////////////
+////////////////////////////////////////////////////////////
+
+//deleta o primeiro item do filtro
+db.collection.deleteOne(filter)
+db.student.deleteOne({_id: ObjectId("5ef7eda5bbff7cf0f13fc771")})
+
+//deleta todo os itens do filtro
+db.collection.deleteMany(filter)
+db.student.deleteMany({subject: "teste"})
+
+
+////////////////////////////////////////////////////////////
+//////////////////////// BulkWrite /////////////////////////
+////////////////////////////////////////////////////////////
+
+//Execução de comandos em massa
+db.collection.bulkWrite([operacao01,operacao02],options)
+
+db.student.bulkWrite([
+    {insertOne:{
+        "document": {
+                      name:"Thiago Peixoto",
+                      subject:"Fisica",
+                      type:"Prova Final",
+                      value: 16,
+                      timestamp: new Date()
+                    }
+      }
+    },
+
+    {insertOne:{
+        "document": {
+                      name:"Patricia Rafaela",
+                      subject:"Portugues",
+                      type:"Trabalho Pratico",
+                      value: 21.3,
+                      timestamp: new Date()
+                    }
+      }
+    },
+
+    {
+      updateOne:{
+          "filter": {name:"Marco Antonio"},
+          "update": {$set: {subject:"updateOne"}}
+          }
+    },
+
+    {
+      deleteOne:{
+        "filter": {
+                    name: "Pedro Augusto",
+                    type: "Trabalho Pratico",
+                    subject: "Historia"
+                  }
+      }
+    },
+   
+    {
+      replaceOne:{
+        "filter" : {_id: ObjectId("5ef7b0e9bbff7cf0f13fc76b")},
+        "replacement": {  
+                      name: "Tais Bernardes", 
+                      subject:"Fisica",
+                      value: 12,
+                      timestamp: new Date()
+                   }
+      }
+    }
+])
+
+//],{ordered:false})
+
+
+insertOne
+insertMany
+updateOne
+updateMany
+
+
+
+////////////////////////////////////////////////////////////
+/////////////////////////// INDEX //////////////////////////
+////////////////////////////////////////////////////////////
+
+db.student.getIndexes()
+db.student.createIndex({campo: -1})
+db.student.createIndex({name: -1})
+
+
+db.student.dropIndex("name_-1") // Pelo nome 
+db.student.dropIndex({name:-1}) // pelo campo
+db.student.dropIndexes()         // apaga todos os index
+
+
+db.student.createIndex({campo:"text"}) // Cria index do tipo text 
+db.livros.find({$text: {$search: "escritorio Jornalista"}},{_id:1})
+
+db.livros.find({$text: {$search: "escritorio Jornalista"}},{score
+{$meta:"textScore" }}) // percentual de correspondencia
+
+
+db.livros.find({$text: {$search: "escritorio Jornalista"}},{score
+{$meta:"textScore" }}).sort({score:{$meta:"textScore"}}) // percentual de correspondencia ordenado
+
+
+db.livros.find({$text: {$search: "escritorio Jornalista"}},{score
+{$meta:"textScore" }}).sort({score:{$meta:"textScore"}}).limite(3) // percentual de correspondencia ordenado
+
+
+
+////////////////////////////////////////////////////////////
+////////////////////////// AGGREGATE////////////////////////
+////////////////////////////////////////////////////////////
+
+db.student.aggregate([
+  {$project: {}},
+  {$match: {campo: "X"}},
+  {$group: {_id:"$campo", total: {$sum: "$campo"}}},
+  {$sort : {}},
+  {$skip: N},
+  {$limit: N}
+])
+
+db.student.aggregate([
+  {$project: {}},
+  {$match: {campo: "X"}}, -> agrupar os documentos com tenham
+  {$group: {_id:"$campo", total: {$sum: "$campo"}}},
+  {$sort : {}},
+  {$skip: N},
+  {$limit: N}
+])
+
+
+
+
+// soma total
+db.student.aggregate([
+ {$group: {_id: null, total:{$sum: "$value"}}}
+
+])
+
+//media
+db.student.aggregate([
+ {$group: {_id: null, media:{$avg: "$value"}}}
+])
+
+//media
+db.student.aggregate([
+  {$match:{subject:"Matematica"}},
+ {$group: {_id: null, total:{$sum: "$value"}}}
+])
+
+
+db.student.aggregate([
+  {$match:{subject:"Historia"}},
+ {$group: {_id:{subject:"$subject", type:"$type"}, total:{$sum: "$value"}}}
+])
+
+
+db.student.aggregate([
+ {$group: {_id:{subject:"$subject", type:"$type"}, total:
+  {$sum: "$value"}}},
+  {$sort: {_id:1}}
+]).pretty()
+
+
+db.student.count(query)
+
+db.student.count(
+  {subject:"Historia"}
+)
+db.student.countdocuments(query)
+
+db.student.countDocuments({subject:"Historia"}
+)
+
+
+db.student.countDocuments({subject:"Historia", value: {$gt:10}}
+)
+
+db.student.distinct(field, query)
+
+db.student.distinct("subject")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
