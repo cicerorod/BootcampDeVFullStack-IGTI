@@ -1,8 +1,16 @@
 // iniciar servidor 
 C:\Users\cicer>mongod -dbpath="C:\BootcampDeVFullStack\MongoDataBase"
 
-// Acessa o servidor via linha de comendo
+// Acessa o servidor via linha de comendo local()
 mongo -host localhost:27017
+
+
+// Acessa o servidor via linha de comendo local()
+mongo -host localhost:27017
+mongod -dbpath="C:\BootcampDeVFullStack\MongoDataBase"
+
+//mongodb atlas
+mongo -host mongodb+srv://cicerorod:1808036901@cluster0-xumbc.mongodb.net/test
 
 
 
