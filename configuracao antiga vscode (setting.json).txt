@@ -1,6 +1,5 @@
 {
-  "terminal.integrated.fontSize": 14,
-
+  "terminal.integrated.fontSize": 15,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "newUntitledFile",
 

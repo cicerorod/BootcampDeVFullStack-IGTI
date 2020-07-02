@@ -1,0 +1,8 @@
+git config --system (para todos os usuários)
+
+git config --global (para configurações do usuário)
+ 
+git config --local (para configurações do projeto)
+
+
+git config --list --show --origem
