@@ -1,5 +1,5 @@
 {
-  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontSize": 14,
 
   "workbench.iconTheme": "vscode-icons",
   "workbench.startupEditor": "newUntitledFile",
