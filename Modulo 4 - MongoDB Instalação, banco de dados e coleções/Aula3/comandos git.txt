@@ -3,6 +3,25 @@ git config --system (para todos os usuários)
 git config --global (para configurações do usuário)
  
 git config --local (para configurações do projeto)
-
-
 git config --list --show --origem
+
+
+
+git checkout -b dev origin/dev
+
+git checkout -b dev feature/CriaRotas
+
+
+-------- baixar a branch do reposito remoto
+git clone https://github.com/brunoaugustoteixeira/grades-api.git
+
+git checkout -b 'feature/CriaRotas' remotes/origin/'feature/CriaRotas'.
+
+git checkout -b 'feature/CriaRotas' ----> 
+
+--------
+
+mongoimport --host Cluster0-shard-0/cluster0-shard-00-00-xumbc.mongodb.net:27017,cluster0-shard-00-01-xumbc.mongodb.net:27017,cluster0-shard-00-02-xumbc.mongodb.net:27017 --ssl --username cicerorod --password 1808036901 --authenticationDatabase admin --db desafio --collection grades --type csv --headerline --file c:\grades.svc
+
+
+
