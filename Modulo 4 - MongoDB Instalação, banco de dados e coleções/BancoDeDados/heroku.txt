@@ -1,0 +1,42 @@
+//Apos a instalação
+-> heroku login
+
+// Cria uma aplicação e adiciona um repositorio git para a publicação no heroku
+-> heroku create
+
+// apresenta os repositorio do git e do heroku
+->git remote -v
+
+//sobe a aplicação
+->heroku ps:scale web=1
+
+//desativa a aplicação
+->heroku ps:scale web=0
+
+//abre a aplicação (aparece a aplicação no browser)
+->heroku open
+
+//Log de execução no heroku
+->heroku logs --tail
+
+//merge da branch master para a branch do heroku
+->git push heroku master
+
+// abre a aplicacao localente acesando os dados do heroku
+heroku local web
+
+//// se nao fizer este comandos a aplicação web nao funciona
+heroku buildpacks -a lovely-great-basin-78596
+heroku buildpacks:set mars/create-react-app -a lovely-great-basin-78596
+
+
+// para iniciar a aplicação, deve executar 
+git push heroku master
+
+OBS:
+1) no arquivo package.json é necessário: 
+ "start": "node -r dotenv/config --experimental-modules app.js",
+
+2) no mongodb deve ser liberado as portas para acesso 0.0.0.0/0
+
+3) no site do heroku deve configurar as variaveis de ambiente caso existam
