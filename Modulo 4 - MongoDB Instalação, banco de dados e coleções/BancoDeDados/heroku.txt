@@ -7,6 +7,9 @@
 // apresenta os repositorio do git e do heroku
 ->git remote -v
 
+// se quiser renovamer 
+reroku apps:name testestesteste
+
 //sobe a aplicação
 ->heroku ps:scale web=1
 
@@ -36,7 +39,48 @@ git push heroku master
 OBS:
 1) no arquivo package.json é necessário: 
  "start": "node -r dotenv/config --experimental-modules app.js",
+	
+
+
 
 2) no mongodb deve ser liberado as portas para acesso 0.0.0.0/0
 
 3) no site do heroku deve configurar as variaveis de ambiente caso existam
+
+4) necessario ter o arquivo procfile
+    no web  : web: npm start
+    no from : web: node -r detenv/conig -- experimental app.js	
+
+5) Verificar a necessidade de instalar o pacote serve no front-end
+no arquivo json: "Start": "serve -s build"
+
+
+
+
+
+
+
+
+----- git------
+git branch
+git fetch -> tras todas do repositorio remoto
+git checkout nomeDaBranch 
+
+git branch ->  apresenta todas as branch que estao local
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
