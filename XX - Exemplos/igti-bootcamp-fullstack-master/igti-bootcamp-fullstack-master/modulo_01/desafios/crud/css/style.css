@@ -1,0 +1,9 @@
+#crudForm {
+    padding: 10px;
+    margin: 15px 10px;
+}
+
+.input-text{
+    width: 100%;
+    max-width: 300px;
+}

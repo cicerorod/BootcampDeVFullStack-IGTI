@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/reboot.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>CRUD</title>
+</head>
+<body>
+    <header>
+        <h1>Cadastro de Nomes</h1>
+    </header>
+    <section id="crudForm">
+        <form action="#"></form>
+            <div>
+                <label for="txtUserName">Nome:</label>
+                <input class="input-text" type="text" name="txtUserName" id="txtUserName" 
+                    placeholder="Informe um nome aqui">
+            </div>
+        </form>
+    </section>
+
+    <section id="registerUsersInfo">
+        <h2>Nomes cadastrados</h2>
+
+        <table id="registeredUsers"></table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Não há usuarios cadastrados</td><td></td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <script src="./js/script.js" />
+</body>
+</html>
